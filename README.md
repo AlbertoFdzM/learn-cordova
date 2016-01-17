@@ -50,11 +50,11 @@ This is the simplest thing to do because when you create a project with the cord
 
 Remove all the files inside `www/`.
 
-Then create the next `www/index.html` file
+Then create the next `www/index.html` file:
 
 ```html
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
   <!-- With this tag we can define the content security polycy to prevent XSS, inline scripts, limit the request to only one defined URL, etc. We are going to use the recomended by cordova team. -->
@@ -73,10 +73,52 @@ Then create the next `www/index.html` file
 
   <h1>Hello Cordova</h1>
 
-  <script type="text/javascript" src="cordova.js"></script>
+  <script src="cordova.js"></script>
 </body>
 
 </html>
 ```
 
 As you can see we have added some metas to restrict client platforms unwanted behaviours for our app and to set the security polycy for the app. Apart of this we are importing the cordoba library to work with at the bottom of the body.
+
+Well now we have a beautiful and unique app that says "Hello Cordova". You can try it with `cordova run`.
+
+## Using cordova API
+
+Lets play a little with the cordova API. First we need to know when the device is ready to rock, so lets create the next `www/js/app.js` file:
+
+```javascript
+(function() {
+
+'use strict';
+
+// Let's define a simple app
+var app = {
+  init: function() {
+    // Our initialization script will bind some events
+    this.bindEvents();
+  },
+
+  bindEvents: function() {
+    // We'll know when our machine is ready to rock
+    document.addEventListener('deviceready', this.onDeviceReady, false);
+  },
+
+  onDeviceReady: function(ev) {
+    // Awesome things can happen here
+    // Let paint our title with a red background
+    document.querySelector('h1').style.background = 'red';
+  }
+};
+
+// Awakening the beast
+app.init();
+
+}());
+```
+
+Now don't forget to add the script just after the `cordoba.js` import:
+
+```html
+  <script src="js/app.js"></script>
+```
