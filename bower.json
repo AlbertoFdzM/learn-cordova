@@ -1,0 +1,23 @@
+{
+  "name": "learn-cordova",
+  "homepage": "https://github.com/AlbertoFdzM/learn-cordova",
+  "authors": [
+    "Alberto Fernandez <albertofdzm@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "www/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "page": "visionmedia/page.js#~1.6.4",
+    "jquery": "~2.2.0"
+  }
+}

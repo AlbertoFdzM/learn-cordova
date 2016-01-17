@@ -88,10 +88,6 @@ Well now we have a beautiful and unique app that says "Hello Cordova". You can t
 Lets play a little with the cordova API. First we need to know when the device is ready to rock, so lets create the next `www/js/app.js` file:
 
 ```javascript
-(function() {
-
-'use strict';
-
 // Let's define a simple app
 var app = {
   init: function() {
@@ -113,12 +109,86 @@ var app = {
 
 // Awakening the beast
 app.init();
-
-}());
 ```
 
 Now don't forget to add the script just after the `cordoba.js` import:
 
 ```html
   <script src="js/app.js"></script>
+```
+
+## Routing!
+
+Lets implement a routing system using [PageJS](http://visionmedia.github.io/page.js/) and [jQuery](http://jquery.com/).
+
+Our project is going to have a new javascript file `www/js/routes.js`:
+
+```javascript
+// View switch andler to hide and show the corresponding view
+function changeView(ctx, next) {
+  var $viewEl = $('#' + ctx.pathname.substr(1));
+
+  $('main > section').hide();
+
+  // If that view does not exists shows the index
+  if ($viewEl.length) {
+    $viewEl.show();
+  } else {
+    $('#index').show();
+  }
+
+  next();
+}
+
+// Handle the first app load redirecting /index.html to /
+page.redirect('/index.html', '/');
+
+// Bind the view switcher to all routes
+page('*', changeView);
+
+page();
+```
+
+And then in our `www/index.html`:
+
+```html
+<!DOCTYPE html>
+  // ...
+
+  <style>
+    main > section {
+      display: none;
+    }
+
+    #index {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Learning Cordova</h1>
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/about">About</a></li>
+  </ul>
+
+  <main>
+    <section id="index">
+      Index
+    </section>
+
+    <section id="about">
+      About
+    </section>
+  </main>
+
+  <script src="cordova.js"></script>
+  <script src="bower_components/page/page.js"></script>
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+
+  <script src="js/app.js"></script>
+  <script src="js/routes.js"></script>
+</body>
+<html>
 ```

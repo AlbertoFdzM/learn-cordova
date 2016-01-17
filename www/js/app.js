@@ -3,7 +3,7 @@
 'use strict';
 
 // Let's define a simple app
-var app = {
+window.app = {
   init: function() {
     // Our initialization script will bind some events
     this.bindEvents();

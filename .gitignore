@@ -5,6 +5,9 @@
 npm-debug.log
 node_modules
 
+# bower
+bower_components
+
 # Cordova
 platforms
 plugins
