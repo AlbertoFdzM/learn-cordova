@@ -15,9 +15,10 @@ window.app = {
   },
 
   onDeviceReady: function(ev) {
-    // Awesome things can happen here
-    // Let paint our title with a red background
-    document.querySelector('h1').style.background = 'red';
+    cordova.plugins.notification.local.schedule({
+      id: 1,
+      text: 'Single Notification'
+    });
   }
 };
 

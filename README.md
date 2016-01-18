@@ -6,9 +6,9 @@ Just a little try to cordova
 
 - [NodeJS w/ npm](https://nodejs.org/)
 
-## Getting Started
+## Getting Started :zap:
 
-### 1. Installation
+### 1. Installation :floppy_disk:
 
 Just run a npm installation command
 
@@ -16,7 +16,7 @@ Just run a npm installation command
 npm install -g cordova
 ```
 
-### 2. Creating a new Project
+### 2. Creating a new Project :new:
 
 Now that you have cordova installed with npm you can create you project with the next command:
 
@@ -34,7 +34,7 @@ cordova platform add <platform name>
 
 <small>_**Note:** You can add the platform **browser** that doen't need any SDK and start developing from there dealing later with third parties SDKs._</small>
 
-### 4. First app run
+### 4. First app run :fire:
 
 Now it's time to try if we can run our app
 
@@ -44,7 +44,7 @@ cordova run <platform name>
 
 <small>_**Note:** You'll need  yo have the platform SDK installed in you local machine due to run the app in the emulator_</small>
 
-## The hello world example
+## The hello world example :baby:
 
 This is the simplest thing to do because when you create a project with the cordova script it already creates a similar hello world example for you so lets lest clean it to begin from 0.
 
@@ -83,7 +83,7 @@ As you can see we have added some metas to restrict client platforms unwanted be
 
 Well now we have a beautiful and unique app that says "Hello Cordova". You can try it with `cordova run`.
 
-## Using cordova API
+## Using cordova API :space_invader:
 
 Lets play a little with the cordova API. First we need to know when the device is ready to rock, so lets create the next `www/js/app.js` file:
 
@@ -117,7 +117,7 @@ Now don't forget to add the script just after the `cordoba.js` import:
   <script src="js/app.js"></script>
 ```
 
-## Routing!
+## Routing! :anchor:
 
 Lets implement a routing system using [PageJS](http://visionmedia.github.io/page.js/) and [jQuery](http://jquery.com/).
 
@@ -192,3 +192,30 @@ And then in our `www/index.html`:
 </body>
 <html>
 ```
+## Plugins :nut_and_bolt:
+
+Cordova has a [plugins catalog](https://cordova.apache.org/plugins/) developed and maintained by the cordova team and by anyone who want to contribute to the plugin catalog.
+
+### Trying out the local notifications plugin :bell:
+
+There's a [Cordova plugin to manage local notification for our app](https://www.npmjs.com/package/de.appplant.cordova.plugin.local-notification). To install it you have to run the next command:
+
+```bash
+cordova plugin add de.appplant.cordova.plugin.local-notification
+```
+
+Now the the plugin is installed let use it! On the `www/js/app.js` file refactor the `onDeviceReady` function:
+
+```javascript
+cordova.plugins.notification.local.schedule({
+  text: 'Ahoy! Cool notifications now!'
+});
+```
+
+## The Goodbye :wave:
+
+I think that this is enought for a little taste of Cordova and for a sample repo. Hope that you've enjoyed this README.
+
+You can checkout the code on the repo! :smile:
+
+See you! Happy Coding! :beer:
